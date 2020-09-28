@@ -1,0 +1,41 @@
+/*头像大小*/
+.user-avatar{
+  width: 200rpx;
+  height: 200rpx;
+  margin-top: 160rpx;
+}
+
+/* 水平居中 */
+.container{
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.motto{
+  margin-top: 100rpx;
+  font-size: 32rpx;
+  font-size: bold;
+}
+
+.journey-container{
+  border: 1px solid #405f80;
+  width: 200rpx;
+  height: 80rpx;
+  border-radius: 5px;
+  /* 文本居中或者使用flex居中 */
+  text-align: center;
+  margin-top: 200rpx;
+}
+
+.journey{
+  font-size: 22rpx;
+  color: #405f80;
+  /* 保证和容器高度一致才能做好水平居中 */
+  line-height: 80rpx;
+  font-weight: bold;
+}
+
+page{
+  background-color: #b3d4db;
+}
