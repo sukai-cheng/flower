@@ -1,9 +1,3 @@
-/*头像大小*/
-.user-avatar{
-  width: 200rpx;
-  height: 200rpx;
-  margin-top: 160rpx;
-}
 
 /* 水平居中 */
 .container{
@@ -26,6 +20,11 @@
   /* 文本居中或者使用flex居中 */
   text-align: center;
   margin-top: 200rpx;
+}
+
+/*头像大小*/
+.l-avatar{
+  margin-top: 160rpx;
 }
 
 .journey{

@@ -1,8 +1,12 @@
 {
   "pages": [
-    "pages/welcome/welcome" 
+    "pages/welcome/welcome",
+    "pages/posts/posts",
+    "pages/post-detail/post-datil"
   ],
   "window": {
     "navigationBarBackgroundColor": "#b3d4db"
-  }
+  },
+  "sitemapLocation": "sitemap3.json",
+  "requiredBackgroundModes": ["audio"]
 }
