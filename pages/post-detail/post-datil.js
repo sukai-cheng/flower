@@ -5,6 +5,7 @@ import {
 Page({
   data: {
     collect: false,
+    _mgr:null,
     _pid: 0,
     _collectList: {},
     _musicFlag: false
@@ -20,12 +21,19 @@ Page({
     let collectList = wx.getStorageSync('collected');
     if (collectList == '') {
       collect = this.data.collect;
-    }
+    }else{
     collect = collectList[this.data._pid];
+    }
+    console.log(collect)
     this.setData({
       postData,
       collect
     })
+    const mgr = wx.getBackgroundAudioManager();
+    this.data._mgr = mgr;
+    
+    mgr.onPlay(this.onMusicStart);
+    mgr.onPause(this.onMusicStop);
   },
 
   /**
@@ -81,7 +89,10 @@ Page({
    * 点击收藏状态
    */
   onCollect(event) {
-    let collectList = wx.getStorageSync('collected');
+    let collectList = {};
+    if(wx.getStorageSync('collected') != ""){
+      collectList = wx.getStorageSync('collected');
+    }
     collectList[this.data._pid] = !this.data.collect;
     let collect = collectList[this.data._pid];
     //数据持久化
@@ -118,37 +129,33 @@ Page({
   /**
    * 分享按钮
    */
-  async onShare(event){
+  async onShare(event) {
     const result = await wx.showActionSheet({
-      itemList: ['分享到QQ','分享到Wechat','分享到朋友圈'],
+      itemList: ['分享到QQ', '分享到Wechat', '分享到朋友圈'],
     })
   },
 
   /**
    * 音乐播放
    */
-  onMusicStart(event){
-    const mgr = wx.getBackgroundAudioManager();
-    mgr.src = postList[this.data._pid].music.url;
-    mgr.title = postList[this.data._pid].music.title;
-    mgr.coverImgUrl = postList[this.data._pid].music.coverImg;
-    
+  onMusicStart(event) {
+    const mgr = this.data._mgr;
+      mgr.src = postList[this.data._pid].music.url;
+      mgr.title = postList[this.data._pid].music.title;
+      mgr.coverImgUrl = postList[this.data._pid].music.coverImg;
     this.setData({
-      _musicFlag : !this.data._musicFlag
+      _musicFlag: true
     })
   },
 
   /**
    * 音乐暂停
    */
-  onMusicStop(){
-    const mgr = wx.getBackgroundAudioManager();
-    mgr.src = postList[this.data._pid].music.url;
-    mgr.title = postList[this.data._pid].music.title;
-    mgr.coverImgUrl = postList[this.data._pid].music.coverImg;
+  onMusicStop() {
+    const mgr = this.data._mgr;
     mgr.pause();
     this.setData({
-      _musicFlag : !this.data._musicFlag
+      _musicFlag: false
     })
   }
 })
