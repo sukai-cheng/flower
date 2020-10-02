@@ -1,4 +1,4 @@
-// pages/welcome/welcome.js
+// pages/movies/movies.js
 Page({
 
   /**
@@ -6,16 +6,6 @@ Page({
    */
   data: {
 
-  },
-
-  onTap:function 
-  (params) {
-    /**
-     * 跳转到带有选项卡的页面不能用redirectTo
-     */
-    wx.switchTab({
-      url: '/pages/posts/posts',
-    })
   },
 
   /**

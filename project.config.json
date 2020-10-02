@@ -87,6 +87,13 @@
           "id": 2,
           "name": "pages/post-detail/post-datil",
           "pathName": "pages/post-detail/post-datil",
+          "query": "pid=0",
+          "scene": null
+        },
+        {
+          "id": -1,
+          "name": "pages/movies/movies",
+          "pathName": "pages/movies/movies",
           "query": "pid=1",
           "scene": null
         }

@@ -9,7 +9,7 @@ Page({
    * 页面的初始数据
    */
   data: {
-
+    
   },
 
   /**
@@ -25,8 +25,6 @@ Page({
     const flag = await wx.getStorage({
       key: 'flag',
     })
-    
-    
 
     // 数据绑定
     this.setData({
@@ -34,13 +32,7 @@ Page({
     });
   },
 
-  onGotoDetail(event) {
-    // console.log(event);/*能够拿到id值*/
-    const pid = event.currentTarget.dataset.id;
-    wx.navigateTo({
-      url: '/pages/post-detail/post-datil?pid='+pid,
-    })
-  },
+  
 
   /**
    * 生命周期函数--监听页面初次渲染完成

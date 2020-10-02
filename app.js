@@ -2,6 +2,8 @@ App({
   onLaunch() {
     // console.log("start here...");
   },
-  // testNum: 1
+ 
+  gPlayingMusic: false,
+  gIsPlayingPostId: -1
 
 })

@@ -1,11 +1,11 @@
 import {
   postList
 } from '../../data/posts-data.js'
-
+const app = getApp()
 Page({
   data: {
     collect: false,
-    _mgr:null,
+    _mgr: null,
     _pid: 0,
     _collectList: {},
     _musicFlag: false
@@ -21,21 +21,31 @@ Page({
     let collectList = wx.getStorageSync('collected');
     if (collectList == '') {
       collect = this.data.collect;
-    }else{
-    collect = collectList[this.data._pid];
+    } else {
+      collect = collectList[this.data._pid];
     }
     console.log(collect)
     this.setData({
       postData,
-      collect
+      collect,
+      _musicFlag: this.currentMusicIsPlaying()
     })
     const mgr = wx.getBackgroundAudioManager();
     this.data._mgr = mgr;
-    
+
     mgr.onPlay(this.onMusicStart);
     mgr.onPause(this.onMusicStop);
   },
 
+  /**
+   * 当前文章的音乐是不是在播放
+   */
+  currentMusicIsPlaying() {
+    if (app.gPlayingMusic && app.gIsPlayingPostId == this.data._pid) {
+      return true;
+    }
+    return false;
+  },
   /**
    * 生命周期函数--监听页面初次渲染完成
    */
@@ -90,7 +100,7 @@ Page({
    */
   onCollect(event) {
     let collectList = {};
-    if(wx.getStorageSync('collected') != ""){
+    if (wx.getStorageSync('collected') != "") {
       collectList = wx.getStorageSync('collected');
     }
     collectList[this.data._pid] = !this.data.collect;
@@ -140,11 +150,15 @@ Page({
    */
   onMusicStart(event) {
     const mgr = this.data._mgr;
-      mgr.src = postList[this.data._pid].music.url;
-      mgr.title = postList[this.data._pid].music.title;
-      mgr.coverImgUrl = postList[this.data._pid].music.coverImg;
+    mgr.src = postList[this.data._pid].music.url;
+    mgr.title = postList[this.data._pid].music.title;
+    mgr.coverImgUrl = postList[this.data._pid].music.coverImg;
+    app.gPlayingMusic = true;
+    app.gIsPlayingPostId = this.data._pid;
+
     this.setData({
       _musicFlag: true
+
     })
   },
 
@@ -154,6 +168,8 @@ Page({
   onMusicStop() {
     const mgr = this.data._mgr;
     mgr.pause();
+    app.gPlayingMusic = false;
+    app.gIsPlayingPostId = -1;
     this.setData({
       _musicFlag: false
     })
