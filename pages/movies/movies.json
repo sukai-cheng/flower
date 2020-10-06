@@ -1,3 +1,8 @@
 {
-  "usingComponents": {}
+  "usingComponents": {
+    "movie-list": "/components/movie-list/index",
+    "l-search-bar": "/miniprogram_npm/lin-ui/search-bar/index",
+    "movie": "/components/movie/index"
+  },
+  "navigationBarBackgroundColor": "#C22A1E"
 }

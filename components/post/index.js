@@ -21,7 +21,6 @@ Component({
   methods: {
       onGotoDetail(event) {
         const pid = event.currentTarget.dataset.id;
-        console.log(event);
         wx.navigateTo({
           url: '/pages/post-detail/post-datil?pid='+pid,
         })

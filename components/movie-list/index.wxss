@@ -1,0 +1,21 @@
+.title-container{
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between; /*两端分布*/
+  margin-bottom: 28rpx;
+}
+
+.movie-container{
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+}
+
+.container{
+  padding: 36rpx 36rpx;
+  background-color: #ffffff;
+}
+
+.more-text{
+  color: blue;
+}

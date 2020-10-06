@@ -1,6 +1,6 @@
 {
   "component": true,
   "usingComponents": {
-    "l-icon": "/miniprogram_npm/lin-ui/icon/index"
+    "l-rate":"/miniprogram_npm/lin-ui/rate/index"
   }
 }

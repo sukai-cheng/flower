@@ -24,7 +24,6 @@ Page({
     } else {
       collect = collectList[this.data._pid];
     }
-    console.log(collect)
     this.setData({
       postData,
       collect,
@@ -114,11 +113,11 @@ Page({
     // 提示框
     wx.showToast({
       title: collect == true ? '收藏成功' : '取消收藏',
-      duration: 3000
+      duration: 500
     })
 
     /**
-     * 通过天骄await和async可以将promise解析为一个object对象
+     * 通过添加await和async可以将promise解析为一个object对象
      */
     // const result = await wx.showModal({
     //   title: "是否收藏文章",
@@ -143,6 +142,7 @@ Page({
     const result = await wx.showActionSheet({
       itemList: ['分享到QQ', '分享到Wechat', '分享到朋友圈'],
     })
+    console.log(result)
   },
 
   /**

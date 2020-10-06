@@ -1,41 +1,43 @@
-import {
-  postList
-} from '../../data/posts-data.js'
+const app = getApp();
 Page({
 
   /**
    * 页面的初始数据
    */
   data: {
-
+    movies:[]
   },
 
   /**
    * 生命周期函数--监听页面加载
-   * 生命周期函数 == 钩子函数 (由框架自动调用)
    */
-  async onLoad(options) {
-    /**设置缓存 */
-    wx.setStorageSync('flag', true)
-
-    /**读取缓存 */
-    const flag = await wx.getStorage({
-      key: 'flag',
+  onLoad: function (options) {
+    const type = options.type;
+    wx.request({
+      url: app.gBaseUrl+type,
+      method:'GET',
+      /**
+       * 前提是method的类型必须是GET
+       */
+      data:{
+        start:0,
+        count:11
+      },
+      success:(res) => {
+        
+        console.log(res);
+        this.setData({
+          movies:res.data.subjects,
+        })
+      }
     })
-
-    // 数据绑定
-    this.setData({
-      postList
-    });
   },
-
-
 
   /**
    * 生命周期函数--监听页面初次渲染完成
    */
   onReady: function () {
-    // console.log(this.data);
+
   },
 
   /**

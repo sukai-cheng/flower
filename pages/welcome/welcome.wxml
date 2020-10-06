@@ -7,6 +7,7 @@
 <view bind:tap="onTap" class="journey-container">
   <text class="journey">开启小程序之旅</text>
 </view>
+
 </view>
 
 <!-- flex布局 -->

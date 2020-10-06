@@ -1,0 +1,11 @@
+.container{
+  display: flex; /*默认flex-decoration: row*/
+  flex-wrap: wrap; /*换行*/
+  padding: 40rpx 30rpx;
+  justify-content: space-between;/*在主轴方向进行水平分布*/
+}
+
+.movie{
+  margin-bottom: 30rpx;
+}
+
