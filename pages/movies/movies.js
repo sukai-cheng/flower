@@ -16,9 +16,6 @@ Page({
    * 生命周期函数--监听页面加载
    */
   onLoad(options) {
-    // this.setData({
-    //   status: true
-    // }),
     wx.request({
         url: 'http://t.yushu.im/v2/movie/in_theaters?apikey=0df993c66c0c636e29ecbb5344252a4a',
         method: 'GET',
